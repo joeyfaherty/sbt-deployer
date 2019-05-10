@@ -9,6 +9,8 @@ enablePlugins(JavaAppPackaging)
 import NativePackagerKeys._
 import com.typesafe.sbt.SbtNativePackager.packageArchetype
 
+publishTo := Some(Resolver.file("file",  new File( "/tmp/to/my/maven-repo/releases" )) )
+
 name := "sbt-magic-joey"
 
 // used like the groupId in maven
