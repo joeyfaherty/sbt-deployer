@@ -1,4 +1,6 @@
 DS_Store
 .idea/
-*/target/
+target/*
 project/*
+*/target
+target/.*
