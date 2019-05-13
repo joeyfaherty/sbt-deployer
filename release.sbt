@@ -14,9 +14,11 @@ releaseProcess := {
     releaseStepCommand("clean"),
     // creates a zip file package in target/universal
     releaseStepCommand("universal:packageBin"),
+    // creates the fat jar
+    releaseStepCommand("universal:assembly"),
     // publishes this zip file to artifactory
     releaseStepCommand("universal:publish"),
     // generic publish which publishes the root app jar, javadoc, sources and pom.xml
-    publishArtifacts
+    //publishArtifacts
   )
 }

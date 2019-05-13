@@ -28,7 +28,24 @@ import com.typesafe.sbt.SbtNativePackager.Universal
 /*SETTINGS*/
 lazy val commonSettings = Seq(libraryDependencies ++= commonDependencies)
 
+// add this on top of file
+import com.typesafe.sbt.SbtNativePackager._
 
+// add this to project settings
+mappings in Universal := {
+  // universalMappings: Seq[(File,String)]
+  val universalMappings = (mappings in Universal).value
+  val fatJar = (assembly in Compile).value
+
+  // removing means filtering
+  // notice the "!" - it means NOT, so only keep those that do NOT have a name ending with "jar"
+  val filtered = universalMappings filter {
+    case (file, name) => !name.endsWith(".jar")
+  }
+
+  // add the fat jar to our sequence of things that we've filtered
+  filtered :+ (fatJar -> ("lib/" + fatJar.getName))
+}
 
 /*val cqlDdlFile = taskKey[File]("cql-ddl")
 cqlDdlFile := {
