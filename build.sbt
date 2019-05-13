@@ -30,7 +30,7 @@ lazy val commonSettings = Seq(libraryDependencies ++= commonDependencies)
 
 
 
-val cqlDdlFile = taskKey[File]("cql-ddl")
+/*val cqlDdlFile = taskKey[File]("cql-ddl")
 cqlDdlFile := {
   (baseDirectory in Compile).value / "config" / "cql" / "myDDL.cql"
 }
@@ -61,7 +61,7 @@ artifact in (Compile, cqlDdlFile) := {
 // add the .war file to what gets published
 addArtifact(artifact in (Compile, packageWar), packageWar)
 // add the .cql file to what gets published
-addArtifact(artifact in (Compile, cqlDdlFile), cqlDdlFile)
+addArtifact(artifact in (Compile, cqlDdlFile), cqlDdlFile)*/
 
 
 // this is the root project, aggregating all sub projects
